@@ -1,6 +1,7 @@
 package tarotcardPlayer;
 
 import java.awt.BorderLayout;
+import java.util.Random;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -17,11 +18,14 @@ public class Board extends JFrame {
 	private JTextField ThirdText;
 	private JTextField SecondText;
 	private JTextField FirstText;
+	public Card[] Deck = new Card[42];
+	public Card[] Chosen = new Card[2];
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -33,6 +37,40 @@ public class Board extends JFrame {
 			}
 		});
 	}
+	
+	public void MakeCard()
+	{
+
+		for(int j=0;j<2;j++)
+		{
+			for(int i=0;i<21;i++)
+			{
+			if(j==0) {Deck[i]=new Card();
+			Deck[i].setNumber(i+1);
+			Deck[i].setSide(j);
+			}
+			if(j==1) {
+				Deck[i+21]=new Card();
+				Deck[i+21].setNumber(i+21);
+				Deck[i+21].setSide(j);
+			}
+			}
+		}
+		
+		
+	}
+	
+	public void ChooseCard()
+	{
+		Random random = new Random();
+		int first = random.nextInt(42);
+		int second = random.nextInt(42);
+		int third = random.nextInt(42);
+		Chosen[0]=Deck[first];
+		Chosen[1]=Deck[second];
+		Chosen[2]=Deck[third];
+	}
+	
 
 	/**
 	 * Create the frame.
@@ -53,9 +91,11 @@ public class Board extends JFrame {
 		panel.add(FirstCard);
 		
 		JLabel SecondCard = new JLabel("New label");
+		SecondCard.setIcon(null);
 		panel.add(SecondCard);
 		
 		ThirdCard = new JLabel("New label");
+		ThirdCard.setIcon(null);
 		panel.add(ThirdCard);
 		
 		JPanel panel_1 = new JPanel();

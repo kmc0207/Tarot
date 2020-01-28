@@ -13,14 +13,20 @@ public class Card {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSide() {
+	public int getSide() {
 		return side;
 	}
-	public void setSide(String side) {
+	public void setSide(int side) {
 		this.side = side;
 	}
 	private int number;
 	private String name;
-	private String side;
-	
+	private int side;
+	private String url;
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }
